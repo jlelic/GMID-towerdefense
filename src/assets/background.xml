@@ -1,0 +1,3 @@
+<TextureAtlas imagePath="background.png">
+	<SubTexture name="background.png" x="0" y="0" width="800" height="512"/>
+</TextureAtlas>

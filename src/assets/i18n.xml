@@ -1,0 +1,10 @@
+<i18n>
+    <cze>
+      <hi value="Ahoj!" />
+      <play value="Hraj!" />
+    </cze>
+    <eng>
+      <hi value="Hello!" />
+      <play value="Play!" />
+    </eng>
+</i18n>

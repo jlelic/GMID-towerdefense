@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:4bdcddf2f4d05e2cd0b1716fcfc2dfe5:879abb8cf27d98e6a876629a29b1b45f:eb6878c6a6e455156598509100881543$ -->
+<TextureAtlas imagePath="sprites.png" width="512" height="644">
+    <SubTexture name="background" x="0" y="0" width="32" height="32"/>
+    <SubTexture name="boat" x="34" y="0" width="64" height="64"/>
+    <SubTexture name="brown" x="100" y="0" width="32" height="32"/>
+    <SubTexture name="bullet" x="134" y="0" width="32" height="32"/>
+    <SubTexture name="button_cancel" x="168" y="0" width="64" height="64"/>
+    <SubTexture name="button_disabled" x="234" y="0" width="64" height="64"/>
+    <SubTexture name="button_enabled" x="300" y="0" width="64" height="64"/>
+    <SubTexture name="button_pressed" x="366" y="0" width="64" height="64"/>
+    <SubTexture name="coin" x="432" y="0" width="32" height="32"/>
+    <SubTexture name="highlight" x="0" y="66" width="64" height="64"/>
+    <SubTexture name="island" x="66" y="66" width="64" height="64"/>
+    <SubTexture name="machine_gun" x="132" y="66" width="64" height="64"/>
+    <SubTexture name="motorboat" x="198" y="66" width="64" height="64"/>
+    <SubTexture name="raft" x="264" y="66" width="64" height="64"/>
+    <SubTexture name="rocket" x="330" y="66" width="32" height="32"/>
+    <SubTexture name="rocket_base" x="364" y="66" width="64" height="64"/>
+    <SubTexture name="water" x="0" y="132" width="512" height="512"/>
+</TextureAtlas>
