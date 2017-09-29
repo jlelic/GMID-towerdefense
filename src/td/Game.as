@@ -6,7 +6,11 @@ package td
 	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.UncaughtErrorEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
+	import flash.net.URLRequest;
 	import flash.system.LoaderContext;
+	import flash.utils.Dictionary;
 	import td.particles.ParticlesManager;
 	import td.screens.MenuScreen;
 	import td.screens.LevelScreen;
@@ -17,6 +21,7 @@ package td
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import starling.textures.Texture;
+	
 	
 	import td.Context;
 	import td.utils.ErrorDialog;
@@ -37,10 +42,13 @@ package td
 		/** For load() progress... */
 		private var loadProgressBar:Quad;
 		
+		private var musicLoop:Sound;
+		private var soundChannel:SoundChannel;
+
+		
 		public function Game()
         {    
 			trace("Game created");
-			
 			
 			CONFIG::debug {
 				// MONSTER DEBUGGER ~ lib/MonsterDebugger-Starling.swc
@@ -101,23 +109,33 @@ package td
 			addChild(loadProgressBar);
 			loadProgressBar.width = 0;
 			
+			musicLoop = new Sound();
+
+			musicLoop.addEventListener(flash.events.Event.COMPLETE, onSoundLoadComplete);
+
+			musicLoop.load(new URLRequest("assets/loop.mp3"));
+			
+			Context.sounds = new Dictionary();
+			([
+				"boat",
+				"bullet_hit",
+				"coin",
+				"click",
+				"explosion",
+				"motorboat",
+				"raft",
+				"rocket",
+				"shot"
+			]).forEach(function(s, i, a):void{
+				var sound:Sound = new Sound();
+				sound.load(new URLRequest("assets/sounds/" + s + ".mp3"));
+				Context.sounds[s] = sound;
+			});
+			
 			Context.assets.loadAssets(
 				loadProgress, 
 				"assets/"+Context.textureFolder+"/sprites.png",
 				"assets/"+Context.textureFolder+"/sprites.xml"
-/*				"assets/bullet.png",
-				"assets/machine_gun.png",
-				"assets/coin.png",
-				"assets/rocket.png",
-				"assets/highlight.png",
-				"assets/rocket_base.png",
-				"assets/button_pressed.png",
-				"assets/button_enabled.png",
-				"assets/button_disabled.png",
-				"assets/island.png",
-				"assets/boat.png",
-				"assets/water.png",
-				"assets/background.png"*/
 			);
 		}
 		
@@ -139,9 +157,25 @@ package td
 		/** ASSETS LOADED -> SHOW FIRST SCREEN */
 		private function startGame():void
 		{
+			
 			removeChild(loadProgressBar);//remove preloader
 			Context.showScreen(new MenuScreen());
-			// Context.showScreen(new LevelScreen());
+		}
+		
+
+
+		// we wait until the sound finishes loading and then play it, storing the
+		// soundchannel so that we can hear when it "completes".
+		private function onSoundLoadComplete(e:flash.events.Event):void{
+			musicLoop.removeEventListener(flash.events.Event.COMPLETE, onSoundLoadComplete);
+			soundChannel = musicLoop.play();
+			soundChannel.addEventListener(flash.events.Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
+		}
+
+		//  this is called when the sound channel completes.
+		private function onSoundChannelSoundComplete(e:flash.events.Event):void{
+			e.currentTarget.removeEventListener(flash.events.Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
+			soundChannel = musicLoop.play();
 		}
       
 	}

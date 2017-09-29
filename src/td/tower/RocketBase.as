@@ -24,7 +24,8 @@ package td.tower
 			if (!target){
 				return false;
 			}
-			var rocket: Rocket = new Rocket(target, x, y);
+			var rocket: Rocket = new Rocket(target, x+48, y);
+			Context.playSound("rocket");
 			
 			projectiles.push(rocket);
 			screen.addChild(rocket);

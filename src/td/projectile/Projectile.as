@@ -3,6 +3,7 @@ package td.projectile
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import td.enemy.Enemy;
+	import td.Context;
 
 	public class Projectile extends Sprite
 	{
@@ -44,6 +45,7 @@ package td.projectile
 				target.health -= damage;
 				active = false;
 				toBeDestroyed = true;
+				Context.playSound("explosion");
 				return;
 			}
 			

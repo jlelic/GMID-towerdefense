@@ -1,5 +1,7 @@
 package td 
 {
+	import flash.media.SoundChannel;
+	import flash.utils.Dictionary;
 	import starling.display.Sprite;
 	import starling.display.Stage;
 	import td.screens.ScreenManager;
@@ -37,6 +39,9 @@ package td
 		/** Shortcut for values.v */
 		public static var v: * ;
 		
+		public static var sounds: Dictionary;
+		public static var soundChannel: SoundChannel;
+		
 		// ASSETS - SHORTCUTS
 		
 		public static function getTexture(name: String) : Texture {
@@ -62,6 +67,10 @@ package td
 			return new Image(tex);
 		}
 		
+		public static function playSound(name: String) : void{
+			trace("YEEY");
+			soundChannel = sounds[name].play();
+		}
 	}
 
 }

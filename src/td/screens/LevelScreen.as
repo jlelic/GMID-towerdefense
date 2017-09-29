@@ -95,13 +95,13 @@ package td.screens
 			gameMenuScreen.addChild(texture);
 			addChild(gameMenuScreen);	
 			
-			coinsText = new TextField(400, 128, "", new TextFormat("Arial",48,Color.WHITE));
-			coinsText.x = 64;
+			coinsText = new TextField(240, 128, "", new TextFormat("Arial",40,Color.WHITE));
+			coinsText.x = 0;
 			coinsText.y = 64;
 			gameMenuScreen.addChild(coinsText);
 			
-			livesText = new TextField(400, 128, "", new TextFormat("Arial",48,Color.WHITE));
-			livesText.x = 64;
+			livesText = new TextField(240, 128, "", new TextFormat("Arial",40,Color.WHITE));
+			livesText.x = 0;
 			livesText.y = 64+128;
 			gameMenuScreen.addChild(livesText);
 			
@@ -135,6 +135,7 @@ package td.screens
 			cancelButton.y = 256+128+192*2;
 			cancelButton.addEventListener(TouchEvent.TOUCH, function(e:TouchEvent):void{
 				if (e.touches[0].phase == "ended"){
+					Context.playSound("click");
 					level.cancelHighlightIslands();
 					gameState = GameState.IDLE;
 					pressedButton.enable();
@@ -150,6 +151,7 @@ package td.screens
 			}
 			if (e.touches[0].phase == "ended"){
 				if (island.empty){
+					Context.playSound("click");
 					gameScreen.addChild(level.buildTower(island, pressedButton.towerClass));
 					level.cancelHighlightIslands();
 					level.coins -= pressedButton.cost;
@@ -167,6 +169,7 @@ package td.screens
 				return;
 			}
 			if(e.touches[0].phase == "ended"){
+				Context.playSound("click");
 				button.press();
 				gameMenuScreen.addChild(cancelButton);
 				level.highlightEmptyIslands();

@@ -31,6 +31,7 @@ package td.projectile
 				var dy: Number = enemies[i].y + 64 - y;
 
 				if (Math.abs(dx) + Math.abs(dy) < 50){
+					Context.playSound("bullet_hit");
 					enemies[i].health -= damage;
 					active = false;
 					toBeDestroyed = true;

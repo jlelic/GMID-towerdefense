@@ -24,6 +24,7 @@ package td.tower
 		}
 		
 		override protected function fire(screen: Sprite, enemies: Vector.<Enemy>, projectiles: Vector.<Projectile>) : Boolean {
+			Context.playSound("shot");
 			var bullet1: Bullet = new Bullet(x+96, y, Math.PI/2);			
 			var bullet2: Bullet= new Bullet(x+96, y, Math.PI/2);
 			TweenLite.to(bullet1, 0.3, {y: y-48, ease: Power4});

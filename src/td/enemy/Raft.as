@@ -12,6 +12,7 @@ package td.enemy
 			health = 7;
 			super(tileY);
 			dropCoins = 1;
+			Context.playSound("raft");
 		}
 		
 	}

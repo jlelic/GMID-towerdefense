@@ -19,7 +19,7 @@ package
 	/**
 	 * Entry point of the application.
 	 */
-	[SWF(width="1366", height="768", frameRate="60", backgroundColor="#0")]
+	[SWF(frameRate="60", backgroundColor="#0")]
 	public class Main extends Sprite 
 	{
 		
@@ -53,12 +53,18 @@ package
 			
 			// default line style
 			this.graphics.lineStyle(1, 0xFFFFFF);
-			
 			ContextFlash.stageFlash = stage;
+			trace(stage.stageWidth);
+			trace(stage.stageHeight);
+			var stageWidth:int  = Math.max(stage.stageWidth, stage.stageHeight);
+			var stageHeight:int = Math.min(stage.stageWidth, stage.stageHeight);
+			trace("------");
+			stage.setOrientation("rotatedRight");
+			trace(stage.stageWidth);
+			trace(stage.stageHeight);
+
 			
 			//this should remain here, because, this value might change after inicializing starling, keep this
-			var stageWidth:int  = stage.stageWidth;
-			var stageHeight:int = stage.stageHeight;
 			
 			this.graphics.drawRect(0, 0, stageWidth-1, stageHeight-1);
 			
@@ -91,8 +97,6 @@ package
 			Context.textureFolder = i.toString();
 			
 			Game.starter = this;
-			trace(stageWidth);
-			trace(stageHeight);
 			_starling = new Starling( Game, this.stage, new Rectangle(0, 0, stageWidth,  stageHeight));
 			_starling.simulateMultitouch = false;
 			_starling.enableErrorChecking = false;

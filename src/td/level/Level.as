@@ -69,6 +69,7 @@ package td.level
 			coinsScreen.removeChild(coin);
 			coins += 25;
 			updateUi();
+			Context.playSound("coin");
 			coin.removeEventListeners();
 			coin.dispose();
 		}

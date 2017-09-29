@@ -12,6 +12,7 @@ package td.enemy
 			health = 9;
 			super(tileY);
 			dropCoins = 3;
+			Context.playSound("motorboat");
 		}
 		
 	}
